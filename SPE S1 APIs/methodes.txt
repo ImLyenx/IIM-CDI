@@ -1,0 +1,4 @@
+Inscription : POST
+Mise à jour de l'adresse : PUT
+Consultation du profil : GET
+Supression du compte : DELETE
