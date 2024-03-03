@@ -8,22 +8,32 @@
   <body>
     <div id="starWars3"></div>
     <script>
+      // Function to fetch Star Wars Episode 3 data from the API
       function fetchStarWars3() {
+        // Your API key goes here
+        const API_KEY = "YOUR_API_KEY";
+        // Fetch data from the API using the API key
         return fetch(
-          "https://api.themoviedb.org/3/movie/1895?api_key=7375b3162ed1bb2f24bb965386019997&language=fr-FR"
-        ).then((response) => response.json());
+          `https://api.themoviedb.org/3/movie/1895?api_key=${API_KEY}&language=fr-FR`
+        ).then((response) => response.json()); // Convert the response to JSON
       }
+
+      // Async function to display Star Wars Episode 3 data
       async function displayStarWars3() {
         try {
+          // Await the data from the fetchStarWars3 function
           const data = await fetchStarWars3();
+          // Insert the data into the HTML
           document.getElementById("starWars3").innerHTML = `
                     <h1>${data.title}</h1>
                     <img src="https://image.tmdb.org/t/p/w500/${data.poster_path}" />
                     `;
         } catch (error) {
+          // Log any errors to the console
           console.error(error);
         }
       }
+      // Call the displayStarWars3 function
       displayStarWars3();
     </script>
   </body>

@@ -8,18 +8,29 @@
   <body>
     <div id="pokemon"></div>
     <script>
+      // Function to fetch Pokemon data from the API
       function fetchPokemon(pokemon) {
+        // Fetch data from the Pokemon API for a specific Pokemon
         return fetch("https://pokeapi.co/api/v2/pokemon/" + pokemon).then(
+          // Convert the response to JSON
           (response) => response.json()
         );
       }
+
+      // Function to display Pokemon data on the webpage
       async function displayPokemon(pokemon) {
+        // Await the data from the fetchPokemon function
         const data = await fetchPokemon(pokemon);
+        // Get the element with id "pokemon" and set its innerHTML
+        // Display the Pokemon's name and image
         document.getElementById("pokemon").innerHTML = `
           <h1>${data.name}</h1>
           <img src="${data.sprites.front_default}" alt="${data.name}" />
         `;
       }
+
+      // Call the displayPokemon function with "pikachu" as the argument
+      displayPokemon("pikachu");
     </script>
   </body>
 </html>
